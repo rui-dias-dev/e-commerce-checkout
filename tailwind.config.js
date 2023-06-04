@@ -21,6 +21,20 @@ export default {
                 "base-background": "var(--base-background)",
                 "base-white": "var(--base-white)",
             },
+            fontSize: {
+                xxs: [
+                    "0.625rem",
+                    {
+                        lineHeight: "0.8125rem",
+                    },
+                ],
+            },
+            borderRadius: {
+                "4xl": "36px",
+            },
+            gridTemplateColumns: {
+                catalog: "repeat( auto-fit, minmax(256px, 1fr) )",
+            },
         },
     },
     plugins: [],

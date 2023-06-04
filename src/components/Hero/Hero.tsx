@@ -3,42 +3,42 @@ import coffeImage from "../../assets/coffe.png";
 
 export const Hero = () => {
     return (
-        <section className="grid justify-items-center lg:justify-items-stretch lg:flex gap-14 max-w-6xl px-8 m-auto my-24">
+        <section className="m-auto my-24 grid max-w-6xl justify-items-center gap-14 px-8 lg:flex lg:justify-items-stretch">
             <div>
                 <h1 className="text-5xl text-base-title">
                     Encontre o café perfeito para qualquer hora do dia
                 </h1>
-                <p className="text-xl mt-4 text-base-subtitle">
+                <p className="mt-4 text-xl text-base-subtitle">
                     Com o Coffee Delivery você recebe seu café onde estiver, a
                     qualquer hora
                 </p>
-                <div className="grid sm:grid-cols-2 gap-y-5 mt-16">
-                    <div className="flex gap-3 items-center">
-                        <div className="flex items-center justify-center p-2 rounded-full text-base-white bg-yellow-dark">
+                <div className="mt-16 grid gap-y-5 sm:grid-cols-2">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center rounded-full bg-yellow-dark p-2 text-base-white">
                             <ShoppingCart weight="fill" />
                         </div>
                         <p className="text-base-text">
                             Compra simples e segura
                         </p>
                     </div>
-                    <div className="flex gap-3 items-center">
-                        <div className="flex items-center justify-center p-2 rounded-full text-base-white bg-base-text">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center rounded-full bg-base-text p-2 text-base-white">
                             <Package weight="fill" />
                         </div>
                         <p className="text-base-text">
                             Embalagem mantém o café intacto
                         </p>
                     </div>
-                    <div className="flex gap-3 items-center">
-                        <div className="flex items-center justify-center p-2 rounded-full text-base-white bg-yellow">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center rounded-full bg-yellow p-2 text-base-white">
                             <Timer weight="fill" />
                         </div>
                         <p className="text-base-text">
                             Entrega rápida e rastreada
                         </p>
                     </div>
-                    <div className="flex gap-3 items-center">
-                        <div className="flex items-center justify-center p-2 rounded-full text-base-white bg-purple-dark">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center rounded-full bg-purple-dark p-2 text-base-white">
                             <Coffee weight="fill" />
                         </div>
                         <p className="text-base-text">
