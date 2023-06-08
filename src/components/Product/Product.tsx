@@ -1,13 +1,16 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 import { ProductProps, TagProps } from "../../@types/product";
 
 import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
 import { Tag } from "./Tag";
 import { priceFormatter } from "../../utils/formatter";
+import { useCart } from "../../context/CartProvider";
 
 export const Product = ({ product }: ProductProps) => {
     const [quantity, setQuantity] = useState(1);
+
+    const { addProductToCart } = useCart();
 
     const { image, price, subtitle, tags, title } = product;
 
@@ -19,10 +22,14 @@ export const Product = ({ product }: ProductProps) => {
         setQuantity((prev) => ++prev);
     };
 
+    const handleAddProductToCart = () => {
+        addProductToCart({ ...product, quantity });
+    };
+
     return (
         <div className="flex flex-col rounded-bl-4xl rounded-br-md rounded-tl-md rounded-tr-4xl bg-base-card p-5">
             <img className="m-auto -mt-10 h-32 w-32" src={image} alt="" />
-            <ul className="mt-3 flex flex-1 justify-center gap-1 items-center">
+            <ul className="mt-3 flex flex-1 items-center justify-center gap-1">
                 {tags.map((tag: TagProps) => (
                     <Tag key={tag.name} name={tag.name} />
                 ))}
@@ -45,7 +52,7 @@ export const Product = ({ product }: ProductProps) => {
                     >
                         <Minus className="" />
                     </button>
-                    <span className="w-5 bg-transparent text-center flex items-center justify-center">
+                    <span className="flex w-5 items-center justify-center bg-transparent text-center">
                         {quantity}
                     </span>
                     <button
@@ -55,7 +62,10 @@ export const Product = ({ product }: ProductProps) => {
                         <Plus />
                     </button>
                 </div>
-                <button className="ml-2 rounded-md bg-purple-dark p-2 text-base-white">
+                <button
+                    className="ml-2 rounded-md bg-purple-dark p-2 text-base-white"
+                    onClick={handleAddProductToCart}
+                >
                     <ShoppingCart weight="fill" width={22} height={22} />
                 </button>
             </footer>

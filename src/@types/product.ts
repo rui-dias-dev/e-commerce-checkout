@@ -1,8 +1,8 @@
-export interface TagProps{
+export interface TagProps {
     name: string;
 }
 
-export interface Product{
+export interface Product {
     id: string;
     image: string;
     tags: TagProps[];
@@ -13,4 +13,8 @@ export interface Product{
 
 export interface ProductProps {
     product: Product;
+}
+
+export interface CartProduct extends Product {
+    quantity: number;
 }
