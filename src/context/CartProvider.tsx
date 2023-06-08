@@ -30,11 +30,9 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
             if (isProductAlreadyInCart(prev, newProduct)) {
                 return prev.map((product: CartProduct) => {
                     if (product.id === newProduct.id) {
-                        console.log("product.quantity: ", product.quantity);
-                        product.quantity += newProduct.quantity;
-                    }
-
-                    return product;
+                        return { ...product, quantity: product.quantity + newProduct.quantity };
+                      }
+                      return product;
                 });
             } else {
                 return [...prev, newProduct];
