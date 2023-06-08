@@ -20,7 +20,7 @@ npm run dev
 yarn dev
 ```
 
-You also need to run the JSON Server:<br/>
+You also need to run the JSON Server in order to see the products:<br/>
 ```bash
 json-server --watch data/data.json
 ``` 
