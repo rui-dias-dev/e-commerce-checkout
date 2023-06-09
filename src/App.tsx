@@ -1,10 +1,10 @@
+import { Router } from "./Router";
 import { CartProvider } from "./context/CartProvider";
-import { Home } from "./pages/Home";
 
 function App() {
     return (
         <CartProvider>
-            <Home />
+            <Router />
         </CartProvider>
     );
 }
