@@ -48,7 +48,7 @@ export const Hero = () => {
                 </div>
             </div>
             <div className="h-full w-full max-w-md">
-                <img className="" src={coffeImage} alt="" />
+                <img className="" src={coffeImage} width={"100%"} height={"100%"} alt="" />
             </div>
         </section>
     );

@@ -1,23 +1,22 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Product as ProductType } from "../../@types/product";
 import { Product } from "../Product/Product";
 
 export const Catalog = () => {
     const [products, setProducts] = useState<ProductType[]>([]);
-    
+
     const API_KEY = import.meta.env.VITE_JSON_SERVER_URL;
 
-    const getProducts = async () => {
+    const getProducts = useCallback(async () => {
         return fetch(`${API_KEY}/products`).then(async (response) => {
             const res = await response.json();
-
             setProducts(res);
         });
-    };
+    }, [API_KEY]);
 
     useEffect(() => {
         getProducts();
-    }, []);
+    }, [getProducts]);
 
     return (
         <section className="m-auto my-24 grid max-w-6xl grid-cols-catalog gap-8">

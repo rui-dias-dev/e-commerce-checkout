@@ -6,7 +6,6 @@ import {
     useState,
 } from "react";
 import { CartProduct } from "../@types/product";
-import { Product } from "../components/Product/Product";
 import { isProductAlreadyInCart } from "../lib/cart/cart";
 
 interface CartContextProps {
@@ -26,16 +25,19 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
     const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
 
     const addProductToCart = (newProduct: CartProduct) => {
-        setCartProducts((prev: CartProduct[]) => {
-            if (isProductAlreadyInCart(prev, newProduct)) {
-                return prev.map((product: CartProduct) => {
+        setCartProducts((previousCart: CartProduct[]) => {
+            if (isProductAlreadyInCart(previousCart, newProduct)) {
+                return previousCart.map((product: CartProduct) => {
                     if (product.id === newProduct.id) {
-                        return { ...product, quantity: product.quantity + newProduct.quantity };
-                      }
-                      return product;
+                        return {
+                            ...product,
+                            quantity: product.quantity + newProduct.quantity,
+                        };
+                    }
+                    return product;
                 });
             } else {
-                return [...prev, newProduct];
+                return [...previousCart, newProduct];
             }
         });
     };
@@ -60,6 +62,7 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
     );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useCart(): CartContextProps {
     const context = useContext(Cart);
     return context;
