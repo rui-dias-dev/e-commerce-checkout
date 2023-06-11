@@ -11,10 +11,14 @@ export interface Product {
     price: string;
 }
 
+export interface CartProduct extends Product {
+    quantity: number;
+}
+
 export interface ProductProps {
     product: Product;
 }
 
-export interface CartProduct extends Product {
-    quantity: number;
+export interface CartProductProps{
+    product: CartProduct;
 }

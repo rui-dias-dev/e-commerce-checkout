@@ -1,8 +1,9 @@
 import { ProductProps, TagProps } from "../../@types/product";
 
-import { Tag } from "./Tag";
 import { priceFormatter } from "../../utils/formatter";
+
 import { ProductActions } from "./ProductActions";
+import { Tag } from "./Tag";
 
 export const Product = ({ product }: ProductProps) => {
     const { image, price, subtitle, tags, title } = product;

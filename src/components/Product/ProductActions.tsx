@@ -7,6 +7,7 @@ import { AddToCartButton } from "./AddToCartButton";
 
 export const ProductActions = ({ product }: ProductProps) => {
     const [quantity, setQuantity] = useState(1);
+
     const handleDecreaseQuantity = () => {
         setQuantity((prev) => --prev);
     };
@@ -14,6 +15,7 @@ export const ProductActions = ({ product }: ProductProps) => {
     const handleIncreaseQuantity = () => {
         setQuantity((prev) => ++prev);
     };
+
     return (
         <div className="flex">
             <Quantity
@@ -21,6 +23,7 @@ export const ProductActions = ({ product }: ProductProps) => {
                 handleIncreaseQuantity={handleIncreaseQuantity}
                 quantity={quantity}
             />
+
             <AddToCartButton product={product} quantity={quantity} />
         </div>
     );

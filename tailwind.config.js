@@ -35,6 +35,9 @@ export default {
             gridTemplateColumns: {
                 catalog: "repeat( auto-fit, minmax(256px, 1fr) )",
             },
+            maxWidth: {
+                "1.5xl": "648px"
+            }
         },
     },
     plugins: [],

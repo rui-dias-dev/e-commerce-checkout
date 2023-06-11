@@ -6,13 +6,16 @@ import {
     useState,
 } from "react";
 import { CartProduct } from "../@types/product";
-import { isProductAlreadyInCart } from "../lib/cart/cart";
+import {
+    isProductAlreadyInCart,
+} from "../lib/cart/cart";
 
 interface CartContextProps {
     cartProducts: CartProduct[];
     setCartProducts: Dispatch<React.SetStateAction<CartProduct[]>>;
     addProductToCart: (newProduct: CartProduct) => void;
     removeProductFromCart: (productId: string) => void;
+    updateQuantity: (productId: string, amount: number) => void;
 }
 
 interface CartContextproviderProps {
@@ -48,6 +51,19 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
         );
     };
 
+    const updateQuantity = (productId: string, amount: number) => {
+        setCartProducts((previousCart: CartProduct[]) => {
+            return previousCart.map((product: CartProduct) => {
+                if (product.id === productId) {
+                    product.quantity = amount;
+
+                    return product;
+                }
+                return product;
+            });
+        });
+    };
+
     return (
         <Cart.Provider
             value={{
@@ -55,6 +71,7 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
                 setCartProducts,
                 addProductToCart,
                 removeProductFromCart,
+                updateQuantity,
             }}
         >
             {children}

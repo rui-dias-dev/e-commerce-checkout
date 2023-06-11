@@ -12,12 +12,13 @@ export const Quantity = ({
     handleIncreaseQuantity,
 }: QuantityProps) => {
     return (
-        <div className="ml-5 flex rounded-md bg-base-button">
+        <div className="flex rounded-md bg-base-button">
             <button
                 className="px-2 py-3 text-purple"
                 onClick={handleDecreaseQuantity}
                 disabled={quantity === 1}
                 title="remover"
+                type="button"
             >
                 <Minus className="" />
             </button>
@@ -28,6 +29,7 @@ export const Quantity = ({
                 className="px-2 py-3 text-purple"
                 onClick={handleIncreaseQuantity}
                 title="adicionar"
+                type="button"
             >
                 <Plus />
             </button>

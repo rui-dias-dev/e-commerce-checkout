@@ -14,3 +14,13 @@ export const isProductAlreadyInCart = (
 ) => {
     return cart.some((product: CartProduct) => product.id === newProduct.id);
 };
+
+export const sumSubTotalProductsPrice = (cartProducts: CartProduct[]) => {
+
+    console.log("cartProducts: ", cartProducts)
+    return cartProducts.reduce(
+        (previous, current) =>
+            previous + Number(current.price) * current.quantity,
+        0
+    );
+}
