@@ -10,7 +10,7 @@ import { RemoveFromCartButton } from "./RemoveFromCartButton";
 export const CartProductActions = ({ product }: CartProductProps) => {
     const [quantity, setQuantity] = useState(product.quantity);
 
-    const { updateQuantity } = useCart();
+    const { updateProductQuantity } = useCart();
 
     const handleDecreaseQuantity = () => {
         setQuantity((prev) => --prev);
@@ -21,7 +21,7 @@ export const CartProductActions = ({ product }: CartProductProps) => {
     };
 
     useEffect(() => {
-        updateQuantity(product.id, quantity);
+        updateProductQuantity(product.id, quantity);
     }, [quantity]);
 
     return (

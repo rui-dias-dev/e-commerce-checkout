@@ -36,7 +36,7 @@ export const AddressFields = ({ form }: AddressFieldsProps) => {
                                         {...field}
                                     />
                                 </FormControl>
-                                <FormMessage className="text-red-600" />
+                                <FormMessage  />
                             </FormItem>
                         )}
                     />
@@ -52,7 +52,7 @@ export const AddressFields = ({ form }: AddressFieldsProps) => {
                                         {...field}
                                     />
                                 </FormControl>
-                                <FormMessage className="text-red-600" />
+                                <FormMessage  />
                             </FormItem>
                         )}
                     />
@@ -69,7 +69,7 @@ export const AddressFields = ({ form }: AddressFieldsProps) => {
                                             {...field}
                                         />
                                     </FormControl>
-                                    <FormMessage className="text-red-600" />
+                                    <FormMessage  />
                                 </FormItem>
                             )}
                         />
@@ -88,7 +88,7 @@ export const AddressFields = ({ form }: AddressFieldsProps) => {
                                     <span className="absolute right-3 top-5 -translate-y-1/2 text-xs italic text-base-label">
                                         opcional
                                     </span>
-                                    <FormMessage className="text-red-600" />
+                                    <FormMessage  />
                                 </FormItem>
                             )}
                         />
@@ -105,7 +105,7 @@ export const AddressFields = ({ form }: AddressFieldsProps) => {
                                         {...field}
                                     />
                                 </FormControl>
-                                <FormMessage className="text-red-600" />
+                                <FormMessage  />
                             </FormItem>
                         )}
                     />

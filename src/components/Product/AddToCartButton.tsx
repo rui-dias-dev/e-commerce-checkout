@@ -1,19 +1,30 @@
 import { useCart } from "../../context/CartProvider";
 
-import { Product } from "../../@types/product";
+import { CartProduct, Product } from "../../@types/product";
 
 import { ShoppingCart } from "@phosphor-icons/react";
 
-interface TesteProps {
+interface AddToCartButtonProps {
     product: Product;
     quantity: number;
 }
 
-export const AddToCartButton = ({ product, quantity }: TesteProps) => {
-    const { addProductToCart } = useCart();
+export const AddToCartButton = ({
+    product,
+    quantity,
+}: AddToCartButtonProps) => {
+    const { addProductToCart, cartProducts, updateProductQuantity } = useCart();
 
     const handleAddProductToCart = () => {
-        addProductToCart({ ...product, quantity });
+        const productToAddQuantity = cartProducts.find(
+            (productFromCart) => productFromCart.id === product.id
+        );
+        if (productToAddQuantity) {
+            const amount = quantity + productToAddQuantity.quantity;
+            updateProductQuantity(productToAddQuantity.id, amount);
+        } else {
+            addProductToCart({ ...product, quantity });
+        }
     };
 
     return (

@@ -1,21 +1,17 @@
-import {
-    Dispatch,
-    ReactNode,
-    createContext,
-    useContext,
-    useState,
-} from "react";
+import { ReactNode, createContext, useContext, useReducer } from "react";
 import { CartProduct } from "../@types/product";
 import {
-    isProductAlreadyInCart,
-} from "../lib/cart/cart";
+    addNewProductAction,
+    removeProductAction,
+    updateProductQuantityAction,
+} from "../reducers/cart/actions";
+import { cartReducer } from "../reducers/cart/reducer";
 
 interface CartContextProps {
     cartProducts: CartProduct[];
-    setCartProducts: Dispatch<React.SetStateAction<CartProduct[]>>;
     addProductToCart: (newProduct: CartProduct) => void;
     removeProductFromCart: (productId: string) => void;
-    updateQuantity: (productId: string, amount: number) => void;
+    updateProductQuantity: (productId: string, amount: number) => void;
 }
 
 interface CartContextproviderProps {
@@ -25,53 +21,27 @@ interface CartContextproviderProps {
 const Cart = createContext({} as CartContextProps);
 
 export const CartProvider = ({ children }: CartContextproviderProps) => {
-    const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
+    const [cartProducts, dispatch] = useReducer(cartReducer, []);
 
     const addProductToCart = (newProduct: CartProduct) => {
-        setCartProducts((previousCart: CartProduct[]) => {
-            if (isProductAlreadyInCart(previousCart, newProduct)) {
-                return previousCart.map((product: CartProduct) => {
-                    if (product.id === newProduct.id) {
-                        return {
-                            ...product,
-                            quantity: product.quantity + newProduct.quantity,
-                        };
-                    }
-                    return product;
-                });
-            } else {
-                return [...previousCart, newProduct];
-            }
-        });
+        dispatch(addNewProductAction(newProduct));
     };
 
     const removeProductFromCart = (productId: string) => {
-        setCartProducts((prev: CartProduct[]) =>
-            prev.filter((product: CartProduct) => product.id !== productId)
-        );
+        dispatch(removeProductAction(productId));
     };
 
-    const updateQuantity = (productId: string, amount: number) => {
-        setCartProducts((previousCart: CartProduct[]) => {
-            return previousCart.map((product: CartProduct) => {
-                if (product.id === productId) {
-                    product.quantity = amount;
-
-                    return product;
-                }
-                return product;
-            });
-        });
+    const updateProductQuantity = (productId: string, amount: number) => {
+        dispatch(updateProductQuantityAction(productId, amount));
     };
 
     return (
         <Cart.Provider
             value={{
                 cartProducts,
-                setCartProducts,
                 addProductToCart,
                 removeProductFromCart,
-                updateQuantity,
+                updateProductQuantity,
             }}
         >
             {children}
