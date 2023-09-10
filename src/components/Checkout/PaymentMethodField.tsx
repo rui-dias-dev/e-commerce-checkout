@@ -9,8 +9,10 @@ import {
 import { RadioGroup, RadioGroupItem } from "../ui/RadioGroup";
 
 import { Bank, CreditCard, CurrencyDollar, Money } from "@phosphor-icons/react";
-import { AddressType } from "./CheckoutForm";
+import { PaymentMethodType } from "../../@types/address";
+import { paymentMethodTranslations } from "../../translations/address";
 
+import { AddressType } from "./CheckoutForm";
 interface AddressFieldsProps {
     form: UseFormReturn<AddressType>;
 }
@@ -40,35 +42,54 @@ export const PaymentMethodField = ({ form }: AddressFieldsProps) => {
                                 defaultValue={field.value}
                                 className="flex flex-wrap gap-3"
                             >
-                                <FormItem
-                                    className={"relative flex items-center"}
-                                >
+                                {/* Credit Card */}
+                                <FormItem className="relative flex items-center">
                                     <FormControl className="absolute opacity-0">
-                                        <RadioGroupItem value="credit-card" />
+                                        <RadioGroupItem
+                                            value={PaymentMethodType.CreditCard}
+                                        />
                                     </FormControl>
                                     <FormLabel className="flex cursor-pointer gap-3 rounded-md border bg-base-button p-4 text-xs font-normal uppercase text-base-text [input:checked+&]:border-purple [input:checked+&]:bg-purple-light">
                                         <CreditCard className="h-4 w-4 text-purple" />
-                                        Cartão de crédito
+                                        {
+                                            paymentMethodTranslations[
+                                                PaymentMethodType.CreditCard
+                                            ]
+                                        }
                                     </FormLabel>
                                 </FormItem>
 
+                                {/* Debit Card */}
                                 <FormItem className="relative flex items-center">
                                     <FormControl className="absolute opacity-0">
-                                        <RadioGroupItem value="debit-card" />
+                                        <RadioGroupItem
+                                            value={PaymentMethodType.DebitCard}
+                                        />
                                     </FormControl>
                                     <FormLabel className="flex cursor-pointer gap-3 rounded-md border bg-base-button p-4 text-xs font-normal uppercase text-base-text [input:checked+&]:border-purple [input:checked+&]:bg-purple-light">
                                         <Bank className="h-4 w-4 text-purple" />
-                                        cartão de débito
+                                        {
+                                            paymentMethodTranslations[
+                                                PaymentMethodType.DebitCard
+                                            ]
+                                        }
                                     </FormLabel>
                                 </FormItem>
 
+                                {/* Cash */}
                                 <FormItem className="relative flex items-center">
                                     <FormControl className="absolute opacity-0">
-                                        <RadioGroupItem value="fiat" />
+                                        <RadioGroupItem
+                                            value={PaymentMethodType.Cash}
+                                        />
                                     </FormControl>
                                     <FormLabel className="flex cursor-pointer gap-3 rounded-md border bg-base-button p-4 text-xs font-normal uppercase text-base-text [input:checked+&]:border-purple [input:checked+&]:bg-purple-light">
                                         <Money className="h-4 w-4 text-purple" />
-                                        dinheiro
+                                        {
+                                            paymentMethodTranslations[
+                                                PaymentMethodType.Cash
+                                            ]
+                                        }
                                     </FormLabel>
                                 </FormItem>
                             </RadioGroup>
