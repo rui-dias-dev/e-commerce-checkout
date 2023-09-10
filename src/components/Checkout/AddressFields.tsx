@@ -1,11 +1,11 @@
 import { MapPinLine } from "@phosphor-icons/react";
 import { FormControl, FormField, FormItem, FormMessage } from "../ui/Form";
 import { Input } from "../ui/Input";
-import { FormData } from "./CheckoutForm";
+import { AddressType } from "./CheckoutForm";
 import { UseFormReturn } from "react-hook-form";
 
 interface AddressFieldsProps {
-    form: UseFormReturn<FormData>;
+    form: UseFormReturn<AddressType>;
 }
 
 export const AddressFields = ({ form }: AddressFieldsProps) => {

@@ -9,8 +9,9 @@ import { formSchema } from "../../utils/form";
 import { AddressFields } from "./AddressFields";
 import { PaymentMethodField } from "./PaymentMethodField";
 import { Summary } from "./Summary";
+import { useAddress } from "../../context/AddressProvider";
 
-export interface FormData {
+export interface AddressType {
     zipCode: string;
     address: string;
     location?: string;
@@ -20,19 +21,22 @@ export interface FormData {
 }
 
 export function CheckoutForm() {
-    const form = useForm<FormData>({
+    const { address, createNewAddress } = useAddress();
+    const form = useForm<AddressType>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            zipCode: "",
-            address: "",
-            city: "",
-            location: "",
-            number: "",
+            zipCode: address?.zipCode ?? "",
+            address: address?.address ?? "",
+            city: address?.city ?? "",
+            location: address?.location ?? "",
+            number: address?.number ?? "",
+            paymentMethod: address?.paymentMethod,
         },
     });
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
+        createNewAddress(values);
     }
 
     return (

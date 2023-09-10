@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../../context/CartProvider";
 import { ShoppingCart } from "@phosphor-icons/react";

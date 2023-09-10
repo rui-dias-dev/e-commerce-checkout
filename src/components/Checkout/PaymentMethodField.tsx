@@ -9,10 +9,10 @@ import {
 import { RadioGroup, RadioGroupItem } from "../ui/RadioGroup";
 
 import { Bank, CreditCard, CurrencyDollar, Money } from "@phosphor-icons/react";
-import { FormData } from "./CheckoutForm";
+import { AddressType } from "./CheckoutForm";
 
 interface AddressFieldsProps {
-    form: UseFormReturn<FormData>;
+    form: UseFormReturn<AddressType>;
 }
 
 export const PaymentMethodField = ({ form }: AddressFieldsProps) => {
