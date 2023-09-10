@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useReducer } from "react";
+import {
+    ReactNode,
+    createContext,
+    useContext,
+    useEffect,
+    useReducer,
+} from "react";
 import { CartProduct } from "../@types/product";
 import {
     addNewProductAction,
@@ -21,8 +27,21 @@ interface CartContextproviderProps {
 const Cart = createContext({} as CartContextProps);
 
 export const CartProvider = ({ children }: CartContextproviderProps) => {
-    const [cartProducts, dispatch] = useReducer(cartReducer, []);
+    const [cartProducts, dispatch] = useReducer(
+        cartReducer,
+        [],
+        (initialState) => {
+            const storedStateAsJSON = localStorage.getItem(
+                "@e-commerce-checkout:cart-products-1.0.0"
+            );
 
+            if (storedStateAsJSON) {
+                return JSON.parse(storedStateAsJSON);
+            }
+
+            return initialState;
+        }
+    );
     const addProductToCart = (newProduct: CartProduct) => {
         dispatch(addNewProductAction(newProduct));
     };
@@ -34,6 +53,15 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
     const updateProductQuantity = (productId: string, amount: number) => {
         dispatch(updateProductQuantityAction(productId, amount));
     };
+
+    useEffect(() => {
+        const stateJSON = JSON.stringify(cartProducts);
+
+        localStorage.setItem(
+            "@e-commerce-checkout:cart-products-1.0.0",
+            stateJSON
+        );
+    }, [cartProducts]);
 
     return (
         <Cart.Provider

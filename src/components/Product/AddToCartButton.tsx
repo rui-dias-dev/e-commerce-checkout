@@ -1,6 +1,6 @@
 import { useCart } from "../../context/CartProvider";
 
-import { CartProduct, Product } from "../../@types/product";
+import { Product } from "../../@types/product";
 
 import { ShoppingCart } from "@phosphor-icons/react";
 

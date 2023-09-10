@@ -33,7 +33,7 @@ export default {
                 "4xl": "36px",
             },
             gridTemplateColumns: {
-                catalog: "repeat( auto-fit, minmax(256px, 1fr) )",
+                catalog: "repeat( auto-fit, minmax(250px, 1fr) )",
             },
             maxWidth: {
                 "1.5xl": "648px"

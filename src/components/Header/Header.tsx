@@ -11,7 +11,7 @@ export const Header = () => {
             </NavLink>
             <div className="flex gap-3">
                 <div className="flex items-center gap-2 rounded-md bg-purple-light p-2 text-purple-dark">
-                    <MapPin fill="" />
+                    <MapPin width={22} height={22} weight="fill" className="text-purple" />
                     <span>Porto Alegre, RS</span>
                 </div>
                 <CheckoutButton />

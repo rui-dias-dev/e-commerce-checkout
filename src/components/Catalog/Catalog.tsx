@@ -19,7 +19,7 @@ export const Catalog = () => {
     }, [getProducts]);
 
     return (
-        <section className="m-auto my-24 grid max-w-6xl grid-cols-catalog gap-8">
+        <section className="m-auto my-24 grid max-w-6xl grid-cols-catalog gap-8 px-6">
             {products.map((product: ProductType) => (
                 <Product key={product.id} product={product} />
             ))}
