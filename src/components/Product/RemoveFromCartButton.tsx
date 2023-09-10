@@ -11,7 +11,7 @@ export const RemoveFromCartButton = ({ id }: RemoveFromCartButtonProps) => {
     return (
         <button
             onClick={() => removeProductFromCart(id)}
-            className="ml-2 flex items-center gap-1 rounded-md bg-base-button px-2 py-1"
+            className="flex items-center gap-1 rounded-md bg-base-button px-2 py-3"
             type="button"
         >
             <Trash className="h-4 w-4 text-purple" />

@@ -43,15 +43,15 @@ export function CheckoutForm() {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="m-auto max-w-6xl gap-8 p-8 lg:flex"
+                className="m-auto flex max-w-6xl flex-col gap-8 p-8 lg:flex-row"
             >
-                <section className="w-full max-w-1.5xl">
+                <section className="w-full lg:max-w-1.5xl">
                     <h2 className="text-lg">Complete seu pedido</h2>
                     <AddressFields form={form} />
                     <PaymentMethodField form={form} />
                 </section>
 
-                <section className="flex-1">
+                <section className="flex-1 lg:max-w-1.5xl">
                     <h2 className="text-lg">Cafés selecionados</h2>
                     <Summary />
                 </section>

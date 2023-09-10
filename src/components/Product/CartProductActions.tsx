@@ -25,7 +25,7 @@ export const CartProductActions = ({ product }: CartProductProps) => {
     }, [quantity]);
 
     return (
-        <div className="flex">
+        <div className="flex flex-wrap gap-3 lg:flex-nowrap">
             <Quantity
                 handleDecreaseQuantity={handleDecreaseQuantity}
                 handleIncreaseQuantity={handleIncreaseQuantity}

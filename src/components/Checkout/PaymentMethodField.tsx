@@ -38,7 +38,7 @@ export const PaymentMethodField = ({ form }: AddressFieldsProps) => {
                             <RadioGroup
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
-                                className="flex gap-3"
+                                className="flex flex-wrap gap-3"
                             >
                                 <FormItem
                                     className={"relative flex items-center"}
@@ -73,7 +73,7 @@ export const PaymentMethodField = ({ form }: AddressFieldsProps) => {
                                 </FormItem>
                             </RadioGroup>
                         </FormControl>
-                        <FormMessage  />
+                        <FormMessage />
                     </>
                 )}
             />

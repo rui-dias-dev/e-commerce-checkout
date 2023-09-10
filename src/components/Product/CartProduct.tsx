@@ -6,7 +6,7 @@ import { CartProductActions } from "./CartProductActions";
 
 export const CartProduct = ({ product }: CartProductProps) => {
     return (
-        <div className="flex items-center">
+        <div className="flex flex-wrap lg:flex-nowrap items-center justify-center">
             <img className="h-16 w-16" src={product.image} alt="" />
             <div className="ml-5 flex flex-col gap-2">
                 <p>{product.title}</p>
