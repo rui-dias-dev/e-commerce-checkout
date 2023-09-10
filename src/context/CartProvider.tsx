@@ -9,6 +9,7 @@ import { CartProduct } from "../@types/product";
 import {
     addNewProductAction,
     removeProductAction,
+    resetCartAction,
     updateProductQuantityAction,
 } from "../reducers/cart/actions";
 import { cartReducer } from "../reducers/cart/reducer";
@@ -18,6 +19,7 @@ interface CartContextProps {
     addProductToCart: (newProduct: CartProduct) => void;
     removeProductFromCart: (productId: string) => void;
     updateProductQuantity: (productId: string, amount: number) => void;
+    resetCart: () => void;
 }
 
 interface CartContextproviderProps {
@@ -54,6 +56,10 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
         dispatch(updateProductQuantityAction(productId, amount));
     };
 
+    const resetCart = () => {
+        dispatch(resetCartAction());
+    };
+
     useEffect(() => {
         const stateJSON = JSON.stringify(cartProducts);
 
@@ -70,6 +76,7 @@ export const CartProvider = ({ children }: CartContextproviderProps) => {
                 addProductToCart,
                 removeProductFromCart,
                 updateProductQuantity,
+                resetCart
             }}
         >
             {children}

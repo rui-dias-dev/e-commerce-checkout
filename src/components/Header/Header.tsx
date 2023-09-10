@@ -10,7 +10,7 @@ export const Header = () => {
         ? `${address.location}, ${address.city}`
         : address?.city;
     return (
-        <header className="sticky top-0 m-auto flex max-w-6xl items-center justify-between px-8 py-8">
+        <header className="sticky top-0 z-10 m-auto flex max-w-6xl items-center justify-between px-8 py-8">
             <NavLink to={"/"} title="Home">
                 <img src={Logo} width={85} height={40} alt="" />
             </NavLink>

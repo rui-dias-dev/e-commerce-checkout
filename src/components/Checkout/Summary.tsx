@@ -50,6 +50,7 @@ export const Summary = () => {
             <Button
                 className="mt-6 w-full bg-yellow text-center text-sm font-bold uppercase text-base-white"
                 type="submit"
+                disabled={!cartProducts.length}
             >
                 Confirmar pedido
             </Button>

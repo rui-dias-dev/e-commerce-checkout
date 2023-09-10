@@ -1,6 +1,9 @@
 import * as z from "zod";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCart } from "../../context/CartProvider";
+import { useAddress } from "../../context/AddressProvider";
 
 import { Form } from "../ui/Form";
 
@@ -9,7 +12,6 @@ import { formSchema } from "../../utils/form";
 import { AddressFields } from "./AddressFields";
 import { PaymentMethodField } from "./PaymentMethodField";
 import { Summary } from "./Summary";
-import { useAddress } from "../../context/AddressProvider";
 
 export interface AddressType {
     zipCode: string;
@@ -22,6 +24,8 @@ export interface AddressType {
 
 export function CheckoutForm() {
     const { address, createNewAddress } = useAddress();
+    const { cartProducts, resetCart } = useCart();
+    const navigate = useNavigate();
     const form = useForm<AddressType>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -37,6 +41,11 @@ export function CheckoutForm() {
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
         createNewAddress(values);
+
+        resetCart();
+        if (cartProducts.length) {
+            navigate("/success");
+        }
     }
 
     return (

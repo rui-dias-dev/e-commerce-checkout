@@ -21,7 +21,8 @@ export function cartReducer(state: CartProduct[], action: CartActions) {
                     action.payload.amount
                 )
             );
-
+        case CartActionTypes.RESET_CART:
+            return [];
         default:
             return state;
     }
