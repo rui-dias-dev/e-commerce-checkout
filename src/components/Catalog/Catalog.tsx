@@ -7,9 +7,6 @@ export const Catalog = () => {
 
   const API_KEY = import.meta.env.VITE_JSON_SERVER_URL;
 
-  console.log("API_KEY: ", API_KEY)
-  console.log("products: ", products)
-
   const getProducts = useCallback(async () => {
     return fetch(`${API_KEY}/products`).then(async (response) => {
       const res = await response.json();
