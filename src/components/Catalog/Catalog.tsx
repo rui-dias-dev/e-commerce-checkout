@@ -3,26 +3,30 @@ import { Product as ProductType } from "../../@types/product";
 import { Product } from "../Product/Product";
 
 export const Catalog = () => {
-    const [products, setProducts] = useState<ProductType[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
-    const API_KEY = import.meta.env.VITE_JSON_SERVER_URL;
+  const API_KEY = import.meta.env.VITE_JSON_SERVER_URL;
 
-    const getProducts = useCallback(async () => {
-        return fetch(`${API_KEY}/products`).then(async (response) => {
-            const res = await response.json();
-            setProducts(res);
-        });
-    }, [API_KEY]);
+  const getProducts = useCallback(async () => {
+    return fetch(`${API_KEY}/products`).then(async (response) => {
+      const res = await response.json();
+      setProducts(res);
+    });
+  }, [API_KEY]);
 
-    useEffect(() => {
-        getProducts();
-    }, [getProducts]);
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
 
-    return (
-        <section className="m-auto my-24 grid max-w-6xl grid-cols-catalog gap-8 px-6">
-            {products.map((product: ProductType) => (
-                <Product key={product.id} product={product} />
-            ))}
-        </section>
-    );
+  return (
+    <section className="m-auto my-24 grid max-w-6xl grid-cols-catalog gap-8 px-6">
+      {products ? (
+        products.map((product: ProductType) => (
+          <Product key={product.id} product={product} />
+        ))
+      ) : (
+        <></>
+      )}
+    </section>
+  );
 };
